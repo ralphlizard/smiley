@@ -1,0 +1,51 @@
+{
+  //title, description, version
+  "name": "Happy",
+  "description": "Alternative internetting",
+  "version": "1",
+
+  //manifest version as for 2015 keep it 2
+  "manifest_version": 2,
+    
+      "content_scripts": [
+    {
+      //Required field! Which pages do you want to affect? This is for every page
+      //mind some websites use the https (secure) protocol
+      "matches": ["http://*/*", "https://*/*"],
+      
+      //this example only works on the syllabus and on facebook
+      //"matches": ["http://internetresistance.molleindustria.org/", "https://www.facebook.com/"],
+        
+      //for more see: https://developer.chrome.com/extensions/match_patterns
+      
+      //a list of javascripts to be injected in the page
+      //the order matters put all the includes first
+      "js": ["js/jquery.js", "js/findAndReplaceDOMText.js", "clmtrackr-dev/examples/ext_js/utils.js",
+             "clmtrackr-dev/examples/ext_js/dat.gui.min.js", "clmtrackr-dev/examples/ext_js/jsfeat-min.js", 
+             "clmtrackr-dev/examples/ext_js/frontalface.js", "clmtrackr-dev/examples/ext_js/jsfeat_detect.js",
+             "clmtrackr-dev/examples/ext_js/numeric-1.2.6.min.js", "clmtrackr-dev/examples/ext_js/mosse.js",
+             "clmtrackr-dev/examples/ext_js/left_eye_filter.js", "clmtrackr-dev/examples/ext_js/right_eye_filter.js",
+             "clmtrackr-dev/examples/ext_js/nose_filter.js", "clmtrackr-dev/models/model_pca_20_svm.js", 
+             "clmtrackr-dev/js/clm.js", "clmtrackr-dev/js/svmfilter_webgl.js", "clmtrackr-dev/js/svmfilter_fft.js",
+             "clmtrackr-dev/js/mossefilter.js", "clmtrackr-dev/examples/ext_js/Stats.js", "clmtrackr-dev/js/face_deformer.js", 
+             "clmtrackr-dev/examples/ext_js/jquery.min.js", "clmtrackr-dev/examples/ext_js/jquery.imgareaselect.pack.js", 
+             "clmtrackr-dev/examples/ext_js/BlobBuilder.min.js", "clmtrackr-dev/examples/ext_js/Filesaver.min.js", 
+             "clmtrackr-dev/js/smile.js", "content.js"],
+
+        
+      //when to run the script (if you want to tweak the page probably at the end) 
+      //just before it's visualized
+      "run_at": "document_end"
+    }
+  ],
+    
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    
+    "browser_action": {
+        "default_title": "Click Me"
+    }
+}
